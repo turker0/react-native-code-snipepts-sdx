@@ -18,42 +18,42 @@ React Native Functional Components have inherited react navigation interfaces. S
 
 #### ScreenProps.ts
 
-    ScreenProps interface file. Extends basic StackScreenProps which comes within react navigation.
+ScreenProps interface file. Extends basic StackScreenProps which comes within react navigation.
 
-    ```typescript
-    import {StackScreenProps} from '@react-navigation/stack'
-    import RouteNames from './RouteNames'
-    import  {RouteParams} from './RouteParams'
+```typescript
+import { StackScreenProps } from "@react-navigation/stack";
+import RouteNames from "./RouteNames";
+import { RouteParams } from "./RouteParams";
 
-    export default interface IScreenProps<T extends RouteNames>
-        extends StackScreenProps<RouteParams, T> {}
-    ```
+export default interface IScreenProps<T extends RouteNames>
+  extends StackScreenProps<RouteParams, T> {}
+```
 
 #### RouteNames.ts
 
-    Basic ScreenNames enum. Includes all react navigation screens' names.
+Basic ScreenNames enum. Includes all react navigation screens' names.
 
-    ```typescript
-    enum RouteNames {
-        ScreenName1 = 'ScreenName1'
-    }
-    export default RouteNames
-    ```
+```typescript
+enum RouteNames {
+  ScreenName1 = "ScreenName1",
+}
+export default RouteNames;
+```
 
 #### RouteParams.ts
 
-    Basic ScreenParams type. Includes all react navigation screens' params.
+Basic ScreenParams type. Includes all react navigation screens' params.
 
-    ```typescript
-    import RouteNames from './RouteNames'
+```typescript
+import RouteNames from "./RouteNames";
 
-    type ValuableParams = {
-      // ...
-      [RouteNames.Screen1]: {param01: boolean}
-      // ...
-    }
+type ValuableParams = {
+  // ...
+  [RouteNames.Screen1]: { param01: boolean };
+  // ...
+};
 
-    type DefaultParams = {[key in RouteNames]: {} | undefined}
+type DefaultParams = { [key in RouteNames]: {} | undefined };
 
-    export type RouteParams = DefaultParams & ValuableParams
-    ```
+export type RouteParams = DefaultParams & ValuableParams;
+```
