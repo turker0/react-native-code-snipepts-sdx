@@ -1,5 +1,11 @@
 {
   "name": "react-native-code-snippets-sdx",
+  "publisher": "OguzTurker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oguzturker8/react-native-code-snipepts-sdx"
+  },
+  "license": "MIT",
   "displayName": "React Native Code Snippets",
   "description": "React Native Code Snippets | SabanciDx",
   "version": "0.0.1",

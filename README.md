@@ -1,65 +1,59 @@
-# react-native-code-snippets-sdx README
-
-This is the README for your extension "react-native-code-snippets-sdx". After writing up a brief description, we recommend including the following sections.
+React Native Code Snippets
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+Extension to create React Native:
 
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+    - React Native Functional Component
+    - React Native Functional Component & MobX Injection
+    - MobX Store
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+React Native Functional Components have inherited react navigation interfaces. So make sure you have following react navigation setup.
 
-## Extension Settings
+    - ScreenProps.ts
+    - RouteNames.ts
+    - RouteProps.ts
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+#### ScreenProps.ts
 
-For example:
+    ScreenProps interface file. Extends basic StackScreenProps which comes within react navigation.
 
-This extension contributes the following settings:
+    ```typescript
+    import {StackScreenProps} from '@react-navigation/stack'
+    import RouteNames from './RouteNames'
+    import  {RouteParams} from './RouteParams'
 
-- `myExtension.enable`: enable/disable this extension
-- `myExtension.thing`: set to `blah` to do something
+    export default interface IScreenProps<T extends RouteNames>
+        extends StackScreenProps<RouteParams, T> {}
+    ```
 
-## Known Issues
+#### RouteNames.ts
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+    Basic ScreenNames enum. Includes all react navigation screens' names.
 
-## Release Notes
+    ```typescript
+    enum RouteNames {
+        ScreenName1 = 'ScreenName1'
+    }
+    export default RouteNames
+    ```
 
-Users appreciate release notes as you update your extension.
+#### RouteParams.ts
 
-### 1.0.0
+    Basic ScreenParams type. Includes all react navigation screens' params.
 
-Initial release of ...
+    ```typescript
+    import RouteNames from './RouteNames'
 
-### 1.0.1
+    type ValuableParams = {
+      // ...
+      [RouteNames.Screen1]: {param01: boolean}
+      // ...
+    }
 
-Fixed issue #.
+    type DefaultParams = {[key in RouteNames]: {} | undefined}
 
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-- Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-- Toggle preview (`Shift+CMD+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-- Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (macOS) to see a list of Markdown snippets
-
-### For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+    export type RouteParams = DefaultParams & ValuableParams
+    ```
