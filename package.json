@@ -1,0 +1,20 @@
+{
+  "name": "react-native-code-snippets-sdx",
+  "displayName": "React Native Code Snippets",
+  "description": "React Native Code Snippets | SabanciDx",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.63.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typescriptreact, typescript",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}
